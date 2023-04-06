@@ -17,6 +17,8 @@ const Register: NextPage = () => {
     console.log("Signing up...");
     await signUp?.create({
       emailAddress: email,
+      // firstName: "Test", bonus problem, this doesn't work
+      // lastName: "User",
     });
 
     await signUp?.prepareEmailAddressVerification();
