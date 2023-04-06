@@ -2,7 +2,7 @@
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useSignUp } from "@clerk/clerk-react";
+import { useSignUp } from "@clerk/nextjs";
 
 const Register: NextPage = () => {
   const router = useRouter();
@@ -11,17 +11,21 @@ const Register: NextPage = () => {
   const [email, setEmail] = useState("");
   const [mfaCode, setMfaCode] = useState("");
 
-  const { signUp } = useSignUp();
+  const { signUp, setActive } = useSignUp();
 
   const handleEmailVerification = async () => {
     console.log("Signing up...");
     await signUp?.create({
       emailAddress: email,
-      // firstName: "Test", bonus problem, this doesn't work
-      // lastName: "User",
+      firstName: "Test",
+      lastName: "User",
     });
 
     await signUp?.prepareEmailAddressVerification();
+
+    if (setActive) {
+      await setActive({ session: signUp?.createdSessionId });
+    }
   };
 
   const handleMFAConfirmation = async () => {
