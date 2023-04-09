@@ -31,7 +31,7 @@ describe("pages/register", () => {
       </ClerkProvider>
     );
 
-    expect(getByText("Login page")).toBeVisible();
+    expect(getByText("Register page")).toBeVisible();
     expect(getByText("working")).toBeVisible();
   });
 });
