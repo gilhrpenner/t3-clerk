@@ -18,7 +18,7 @@ beforeAll(() => {
   }));
 });
 
-describe("pages/register", () => {
+describe("pages/login", () => {
   it("should render the register page", () => {
     const { getByText } = render(<LoginPage />);
 
